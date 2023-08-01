@@ -12,10 +12,10 @@ describe("Create post dto", () => {
   it("should be able to input create post", async () => {
     const input = {
       body: {
-        title: "string",
-        description: "string",
-        imgSrc: "string",
-        author: "string"
+        title: "title",
+        description: "description",
+        imgSrc: "imgSrc",
+        author: "author"
       }
     } as IRequestCreateDTO
 
@@ -31,9 +31,9 @@ describe("Create post dto", () => {
     try {
       const input = {
         body: {
-          description: "string",
-          imgSrc: "string",
-          author: "string"
+          description: "description",
+          imgSrc: "imgSrc",
+          author: "author"
         }
       } as IRequestCreateDTO
       createProductDTO.input(input) as IInputCreateDTO
@@ -49,9 +49,9 @@ describe("Create post dto", () => {
     try {
       const input = {
         body: {
-          title: "string",
-          imgSrc: "string",
-          author: "string"
+          title: "title",
+          imgSrc: "imgSrc",
+          author: "author"
         }
       } as IRequestCreateDTO
       createProductDTO.input(input) as IInputCreateDTO
@@ -67,9 +67,9 @@ describe("Create post dto", () => {
     try {
       const input = {
         body: {
-          title: "string",
-          description: "string",
-          author: "string"
+          title: "title",
+          description: "description",
+          author: "author"
         }
       } as IRequestCreateDTO
       createProductDTO.input(input) as IInputCreateDTO
@@ -85,9 +85,9 @@ describe("Create post dto", () => {
     try {
       const input = {
         body: {
-          title: "string",
-          description: "string",
-          imgSrc: "string"
+          title: "title",
+          description: "description",
+          imgSrc: "imgSrc"
         }
       } as IRequestCreateDTO
       createProductDTO.input(input) as IInputCreateDTO

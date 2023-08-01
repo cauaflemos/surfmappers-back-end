@@ -19,7 +19,7 @@ const inMemoryDatabase: InMemoryDatabase = {
       title: "Foto Casamento",
       author: "Pedro Silva",
       description: "Casamento na praia",
-      imgSrc: "https://example.com/image2.jpg",
+      imgSrc: "https://cdn.alboompro.com/5ebc06c9e716a10001d89e71_6340062c3a7c0b000144d073/original_size/elopement-wedding-84.jpg?v=1",
       isAuthorized: true
     }
   ]

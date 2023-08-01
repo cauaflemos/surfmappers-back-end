@@ -14,7 +14,7 @@ describe("Get all posts use case", () => {
   })
 
   it("should be able to get all posts authorized", async () => {
-    const sut = await getAllPostUseCase.execute() as IOutputGetAllDTO
+    const sut = await getAllPostUseCase.execute({ type: "common" }) as IOutputGetAllDTO
 
     expect(sut).toEqual({
       result: [
@@ -23,10 +23,27 @@ describe("Get all posts use case", () => {
           title: "Foto Casamento",
           author: "Pedro Silva",
           description: "Casamento na praia",
-          imgSrc: "https://example.com/image2.jpg",
+          imgSrc: "https://cdn.alboompro.com/5ebc06c9e716a10001d89e71_6340062c3a7c0b000144d073/original_size/elopement-wedding-84.jpg?v=1",
           isAuthorized: true
         }
       ], message: "Posts autorizados!"
+    })
+  })
+
+  it("should be able to get all posts not authorized", async () => {
+    const sut = await getAllPostUseCase.execute({ type: "auth" }) as IOutputGetAllDTO
+
+    expect(sut).toEqual({
+      result: [
+          {
+            postId: "6b7addf1-b8a2-4614-ae3d-22e0ed3ccd57",
+            title: "Foto Altar",
+            author: "Caio Lemos",
+            description: "A noiva no altar",
+            imgSrc: "https://cdn0.casamentos.com.br/article-vendor/8379/3_2/960/jpg/mari-leo-previas-49_13_178379-166013221645741.jpeg",
+            isAuthorized: false
+          },
+      ], message: "Posts ainda não autorizados!"
     })
   })
   
@@ -34,7 +51,7 @@ describe("Get all posts use case", () => {
     try {
         const postsRepository: any = ""
         const invalidGetAllPostsUseCase = new GetAllPostUseCase(postsRepository)
-        await invalidGetAllPostsUseCase.execute()
+        await invalidGetAllPostsUseCase.execute({ type: "auth" })
     } catch (error: any) {
 
         const sut = error
