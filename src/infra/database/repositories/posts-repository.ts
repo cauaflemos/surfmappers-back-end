@@ -18,8 +18,14 @@ export class InMemoryPostsRepository implements PostsRepository {
     }
     inMemoryDatabase.posts.push(data)
 
-    const output = inMemoryDatabase.posts.find((patient) => patient.postId === data.postId) as PostEntity;
+    const output = inMemoryDatabase.posts.find((post) => post.postId === data.postId) as PostEntity;
 
     return output;
   }
+
+  async getAll(): Promise<PostEntity[]> {
+    const output = inMemoryDatabase.posts.filter((post) => post.isAuthorized === true);
+    return output;
+  }
+
 }

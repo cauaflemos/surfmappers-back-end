@@ -18,8 +18,7 @@ describe("Create post use case", () => {
             title: "TESTE",
             description: "Desc Teste",
             imgSrc: "TESTE",
-            author: "TESTE",
-            isAuthorized: false
+            author: "TESTE"
         }
 
         const sut = await createPostUseCase.execute(input) as IOutputCreateDTO
@@ -30,7 +29,6 @@ describe("Create post use case", () => {
         expect(sut.result.description).toEqual(input.description)
         expect(sut.result.imgSrc).toEqual(input.imgSrc)
         expect(sut.result.author).toEqual(input.author)
-        expect(sut.result.isAuthorized).toEqual(input.isAuthorized)
     })
 
     it("should be able to create post", async () => {
@@ -40,7 +38,6 @@ describe("Create post use case", () => {
                 description: "Desc Teste",
                 imgSrc: "TESTE",
                 author: "TESTE",
-                isAuthorized: false
             }
             const postsRepository: any = ""
             const invalidCreatePostUseCase = new CreatePostUseCase(postsRepository)

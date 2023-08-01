@@ -16,4 +16,5 @@ export class PostEntity {
         const patient = new PostEntity(input)
             return patient
     }
+    
 }
