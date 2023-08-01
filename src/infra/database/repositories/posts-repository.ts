@@ -1,7 +1,7 @@
 import { IInputCreateDTO } from "../../../application/interfaces/dtos/repositories/posts/create-post-dto"
 import { IInputGetAllDTO } from "../../../application/interfaces/dtos/repositories/posts/get-all-posts-dto"
 import { PostEntity } from "../../../entities/post-entity"
-import { PostsRepository } from "../../../application/interfaces/repositories/posts-repository"
+import { PostsRepository, TypeOutputExists } from "../../../application/interfaces/repositories/posts-repository"
 import { IGenerator } from "../../../application/interfaces/helpers/generator"
 import inMemoryDatabase from "../in-memory-database"
 import { IInputUpdateDTO } from "../../../application/interfaces/dtos/repositories/posts/update-post-dto"
@@ -32,7 +32,7 @@ export class InMemoryPostsRepository implements PostsRepository {
     return inMemoryDatabase.posts.filter((post) => post.isAuthorized === true)
   }
 
-  async exists(input: IInputExistsDTO): Promise<string> {
+  async exists(input: IInputExistsDTO): Promise<TypeOutputExists> {
     const output = inMemoryDatabase.posts.find((p) => p.postId === input.postId)
 
     if (!output) {

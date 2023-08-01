@@ -25,6 +25,38 @@ describe("Update posts dto", () => {
       expect(sut.message).toEqual("Id do post é obrigatório!")
     }
   })
+  
+  it("should'nt be able to update a post if does not exist", async () => {
+    try {
+      const input = {
+        params: {
+          postId: "123"
+        }
+      }
+      await updatePostsDTO.input(input as IRequestUpdateDTO)
+    } catch (error: any) {
+
+      const sut = error
+
+      expect(sut.message).toEqual("Post não existe!")
+    }
+  })
+
+  it("should'nt be able to update a post if does not exist", async () => {
+    try {
+      const input = {
+        params: {
+          postId: "9cccd88d-52cd-4ba7-81e1-7dfa83800946"
+        }
+      }
+      await updatePostsDTO.input(input as IRequestUpdateDTO)
+    } catch (error: any) {
+
+      const sut = error
+
+      expect(sut.message).toEqual("Post já autorizado!")
+    }
+  })
 
   it("Should be able to update", async () => {
     const input = {

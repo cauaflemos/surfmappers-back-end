@@ -13,8 +13,10 @@ export class DeletePostsDTO {
 
 		if (!inputDTO.postId) throw new Error("Id do post é obrigatório!")
 
-        await this.validate.postExists({ postId: inputDTO.postId, typeResult: "errorParams", authenticated: false })
-
+        const post = await this.validate.postExists({ postId: inputDTO.postId, authenticated: false })
+		
+		if (post === "not_exists") throw new Error("Post não existe!"); 
+		
 		return inputDTO
 	}
 	

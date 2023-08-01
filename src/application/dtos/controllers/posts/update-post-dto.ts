@@ -13,7 +13,10 @@ export class UpdatePostsDTO {
 
 		if (!inputDTO.postId) throw new Error("Id do post é obrigatório!")
 
-        await this.validate.postExists({ postId: inputDTO.postId, typeResult: "errorParams" })
+		const post = await this.validate.postExists({ postId: inputDTO.postId, authenticated: true })
+
+        if (post === "not_exists") throw new Error("Post não existe!"); 
+        if (post === "exists") throw new Error("Post já autorizado!"); 
 
 		return inputDTO
 	}
